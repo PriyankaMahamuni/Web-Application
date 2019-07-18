@@ -7,6 +7,7 @@
 <title>Registration Page</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <style>
 	.fa{
 		font-size:6px;
@@ -14,15 +15,17 @@
 	}
 </style>
   <script>
-  		function check(){
-  			var pass=document.getElementById("txtPassword").value;
-  			var confirmpass=document.getElementById("txtConfirmPassword").value;
-  			if(!(pass.equals("confirmpass")))
-  				{
-  					document.getElementsByTagName("msg").innerHTML= 'Password must match';
-  				}
-  		}
-  
+  $(function () {
+      $("#btnSubmit").click(function () {
+          var password = $("#txtPassword").val();
+          var confirmPassword = $("#txtConfirmPassword").val();
+          if (password != confirmPassword) {
+              alert("Passwords do not match.");
+              return false;
+          }
+          return true;
+      });
+  });  		
   </script>  
 </head>
 <body>
@@ -59,17 +62,17 @@
                  		</div>
                  		<div class="form-feild">
                  			<lable for="Password" class="lable-control">Password</lable>&nbsp;<sup><i class="fa fa-asterisk"></i></sup>
-                 			<input type="password" id="txtPassword" min=8 max=15 name="Password" class="form-control"required>
-                 			<p style="font-size:12px">Make sure it's at least 15 characters OR at least 8 characters including a number and a lowercase letter. </p>
+                 			<input type="password" id="txtPassword" min=8 max=15 name="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" class="form-control" required>
+                 			<p style="font-size:12px">Make sure it's at least 15 characters OR at least 8 characters including a number and a uppercase letter. </p>
                  		</div>
                  		<div class="form-feild">
                  			<lable for="ConfirmPassword" class="lable-control">Re-type Password</lable>&nbsp;<sup><i class="fa fa-asterisk"></i></sup>
-                 			<input type="password" id="txtConfirmPassword" min=8 max=15  name="ConfirmPassword" class="form-control" onchange="checkPassword();"required>
+                 			<input type="password" id="txtConfirmPassword" min=8 max=15  name="ConfirmPassword" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                  		</div>
                  		<span id="msg"></span>
                  		<div class="col-md-12" style="padding:10px"></div>
                  		<div class="col-md-4 form-feild">
-                 		<input type="submit" value="Create" class="form-control btn-primary">
+                 		<input type="submit" value="Create" id="btnSubmit" class="form-control btn-primary">
                  		</div>
 				</form>
 			  </div>

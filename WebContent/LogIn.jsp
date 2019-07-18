@@ -90,7 +90,7 @@
 						</div>
 							<lable for="txtPassword" style="float:left" class="size">Password</lable><a href="ForgotPassword.jsp" class="forgotpassword pull-right">Forgot Password ? </a>
 						<div class="tbox">
-							<input type="password" id="txtPassword" class="form-control" name="txtPassword" placeholder="Enter Password" required>
+							<input type="password" id="txtPassword" class="form-control" name="txtPassword" placeholder="Enter Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 							<span id="message"></span>
 						</div>
 					

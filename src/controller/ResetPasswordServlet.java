@@ -34,11 +34,12 @@ public class ResetPasswordServlet extends HttpServlet {
 			String emailId=request.getParameter("email");
 			String password=request.getParameter("NewPassword");
 			int n=ResetPasswordCode.resetPassword(emailId, password);
-			if(n!=0)
+			if(n>0)
 			{
 				System.out.println("Password changed");
-				RequestDispatcher res=request.getRequestDispatcher("ResetPasswordSuccess.jsp");
-				res.include(request, response);
+				response.sendRedirect("RestPasswordSuccess.jsp");
+				//RequestDispatcher res=request.getRequestDispatcher("ResetPasswordSuccess.jsp");
+				//res.include(request, response);
 			}
 			
 	}

@@ -1,6 +1,7 @@
 package Code;
 
 import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.util.Properties;
 
@@ -29,7 +30,7 @@ public class MailSendToUser {
 			if(email.equals(userEmail))
 			{
 				System.out.println("Sending mail......");
-				send("www.priynkamahamuni91@gmail.com","m@h@m#$$",email,"linking","http://localhost:8080/WebApplication/ResetPassword.jsp");
+				send("priynkamahamuni92@gmail.com","m@h@m#$$",email,"linking","http://localhost:8080/WebApplication/ResetPassword.jsp");
 				return true;
 			}
 		}
@@ -48,8 +49,7 @@ public class MailSendToUser {
 		Properties propertyObject=new Properties();   
         propertyObject.put("mail.smtp.host", "smtp.gmail.com");    
         propertyObject.put("mail.smtp.socketFactory.port", "465");    
-        propertyObject.put("mail.smtp.socketFactory.class",    
-                  "javax.net.ssl.SSLSocketFactory");    
+        propertyObject.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");    
         propertyObject.put("mail.smtp.auth", "true");    
         propertyObject.put("mail.smtp.port", "465");    
 		
@@ -63,6 +63,7 @@ public class MailSendToUser {
                });  
 		try
 		{
+			System.out.println("message in mime");
 			  MimeMessage message = new MimeMessage(session);    
 	           message.addRecipient(Message.RecipientType.TO,new InternetAddress(UserEmail));    
 	           message.setSubject(data);    
